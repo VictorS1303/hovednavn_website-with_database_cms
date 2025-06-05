@@ -1,0 +1,35 @@
+---
+import {fetchConcertData} from '../js/supabase.js'
+
+const {showOverlay} = Astro.props
+import Card from './Card.astro'
+import TicketPurchaseInfo from './TicketPurchaseInfo.astro'
+
+const concertData = await fetchConcertData()
+---
+
+<div class='mx-12'>
+  <div class='concert-cards-container flex flex-wrap justify-center'>
+    {
+      concertData.map((concertCard) => (
+        <Card
+          class='m-4'
+          src={`${concertCard.concert_image}`}
+          isConcertCard={true}
+          showOverlay={showOverlay}
+          concertDate={concertCard.concert_date}
+          concertLocation={concertCard.concert_location}
+          concertPrice={concertCard.concert_price}
+          concertEvent={concertCard.concert_event}
+          concertCancelOverlayImage={
+            concertCard.concert_cancelled_overlay_image
+          }
+          concertCancelOverlayText={concertCard.concert_cancel_overlay_text}
+          concertTarget='_blank'
+          isConcertCancelled={concertCard.is_concert_cancelled}
+        />
+      ))
+    }
+  </div>
+  <TicketPurchaseInfo ticketPurchaseInfoText='Billetter kan købes i døren' />
+</div>
