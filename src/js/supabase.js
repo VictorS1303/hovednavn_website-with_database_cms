@@ -16,7 +16,7 @@ export const fetchTimelineCardsData = async () =>
     return data || []
 }
 
-fetchTimelineCardsData()
+
 
 
 
@@ -31,7 +31,7 @@ export async function fetchArtistsData() {
   return artists || []
 }
 
-fetchArtistsData()
+
 
 // Music Data
 export const fetchMusicData = async (id) => {
@@ -71,7 +71,6 @@ export const fetchSong = async (id) => {
   }
 };
 
-fetchSong(0)
 
 
 // Concert Data
@@ -84,5 +83,12 @@ export const fetchConcertData = async () => {
   return data || []
 };
 
-fetchConcertData()
 
+
+document.addEventListener('DOMContentLoaded', () =>
+{
+  fetchTimelineCardsData()
+  fetchArtistsData()
+  fetchSong(0)
+  fetchConcertData()
+})
