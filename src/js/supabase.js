@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 // ABOUT PAGE //
 export const fetchTimelineCardsData = async () =>
@@ -16,7 +16,7 @@ export const fetchTimelineCardsData = async () =>
     return data || []
 }
 
-
+fetchTimelineCardsData()
 
 
 
@@ -31,7 +31,7 @@ export async function fetchArtistsData() {
   return artists || []
 }
 
-
+fetchArtistsData()
 
 // Music Data
 export const fetchMusicData = async (id) => {
@@ -45,12 +45,10 @@ export const fetchMusicData = async (id) => {
 fetchMusicData()
 
 
+ let currentSongId = 0
+
 export const fetchSong = async (id) => {
-  // Validate the ID to ensure it’s a positive number
-  if (typeof id !== 'number' || id < 0) {
-    console.error("Invalid ID:", id);
-    return null;
-  }
+
 
   try {
     const { data, error } = await supabase
@@ -64,13 +62,14 @@ export const fetchSong = async (id) => {
       return null;
     }
 
-    return data[0] || []; // Return the first song or null if not found
+    return data[0] || []
   } catch (err) {
     console.error("Unexpected error while fetching song:", err.message);
     return null;
   }
 };
 
+fetchSong(currentSongId)
 
 
 // Concert Data
@@ -83,12 +82,4 @@ export const fetchConcertData = async () => {
   return data || []
 };
 
-
-
-document.addEventListener('DOMContentLoaded', () =>
-{
-  fetchTimelineCardsData()
-  fetchArtistsData()
-  fetchSong(0)
-  fetchConcertData()
-})
+fetchConcertData()

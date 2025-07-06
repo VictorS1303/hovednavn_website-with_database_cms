@@ -149,13 +149,11 @@ const musicData = await fetchMusicData()
     audio.addEventListener('timeupdate', updateProgressBar)
 
     function loadSong(song, shouldHighlight = true) {
-   
       trackTitle.textContent = `${song.track_title}`
       trackCoverImage.src = `${song.track_audio_cover}`
       audio.src = `${song.track_audio}`
       startTime.textContent = `${song.track_start_time}`
       endTime.textContent = `${song.track_end_time}`
-
       updateTimerInterval()
 
       if (shouldHighlight) {
@@ -205,11 +203,6 @@ const musicData = await fetchMusicData()
       try {
         const previousSongId = currentSongId - 1
 
-        // if(currentSongId < 1)
-        // {
-        //   currentSongId
-        // }
-
         const previousSong = await fetchSong(previousSongId)
 
         currentSongId = previousSongId
@@ -235,16 +228,6 @@ const musicData = await fetchMusicData()
       audio.play()
       trackCoverImage?.classList.add('spin')
       updatePlayPauseIconState()
-    }
-
-    function updateButtonStates() {
-      if (currentSongId >= musicData.length) {
-        nextSongBtn.style.opacity = '0.5'
-        nextSongBtn.style.pointerEvents = 'none'
-      } else {
-        nextSongBtn.style.opacity = '1'
-        nextSongBtn.style.pointerEvents = 'auto'
-      }
     }
 
     function updateStartTime() {

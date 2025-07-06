@@ -1,29 +1,33 @@
 ---
-import { fetchArtistsData } from '../js/supabase'
+export const prerender = false
 
 import Card from './Card.astro'
 import SectionHeader from './SectionHeader.astro'
-const {class: className, id: id, showOverlay} = Astro.props
+import {supabase} from '../js/supabase.js'
 
+const {data: artistData, error} = await supabase.from('artists').select('*')
+console.log(artistData)
 
-const artistData = await fetchArtistsData()
+if (error) {
+  throw new Error(`Failed to fetch artists: ${error.message}`)
+}
 ---
 
-<div class="flex flex-col mt-16">
-  <SectionHeader sectionHeaderText="Hvem består vi af?" />
+<div class='flex flex-col mt-16'>
+  <SectionHeader sectionHeaderText='Hvem består vi af?' />
   <div
     class='concert-cards-container flex flex-wrap justify-center'
     id='artist_cards_container'>
     {
-      artistData.map((artistCard, index) => (
+      artistData.map((artistCard) => (
         <a href={`/about/${artistCard.id}`}>
           <Card
-            class="artist-card m-4"
-            id={artistCard.id} // Uses artistCard.id, not index
-            src={`${artistCard.artist_image}`}
+            class='artist-card m-4'
+            id={artistCard.id}
+            src={artistCard.artist_image}
             isArtistCard={true}
-            showOverlay={showOverlay}
-            artistName={artistCard.artist_card_title}
+            showOverlay={true}
+            artistName={artistCard.artist_name}
             artistBandRole={artistCard.artist_band_role}
           />
         </a>

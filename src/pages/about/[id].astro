@@ -12,12 +12,13 @@ export async function getStaticPaths() {
 }
 
 const {artist} = Astro.props
+
+console.log(artist.id)
 ---
 
 <SingleViewLayout
-  title=`${artist.artist_name}`
-  name=`${artist.artist_name}`
-  image=`${artist.artist_image}`
-  age=`${artist.artist_age}`
-  about=`${artist.artist_info}`
+  name={artist.artist_name}
+  image={artist.artist_image}
+  age={artist.artist_age}
+  about={artist.artist_info}
 />
