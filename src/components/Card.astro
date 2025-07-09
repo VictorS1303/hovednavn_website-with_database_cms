@@ -63,11 +63,14 @@ const showOverlay = true
         class='h-full w-full object-cover'
         alt='concert card image'
       />
+
+      
       {showOverlay && <Overlay />}
 
       <ConcertCardContent
         concertEvent={concertEvent}
         concertTarget={concertTarget}
+        concertEvent={concertEvent}
         concertDate={concertDate}
         concertLocation={concertLocation}
         concertPrice={concertPrice}

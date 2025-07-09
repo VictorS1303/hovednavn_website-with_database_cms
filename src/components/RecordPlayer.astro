@@ -149,9 +149,11 @@ const musicData = await fetchMusicData()
     audio.addEventListener('timeupdate', updateProgressBar)
 
     function loadSong(song, shouldHighlight = true) {
+      console.log(song)
       trackTitle.textContent = `${song.track_title}`
       trackCoverImage.src = `${song.track_audio_cover}`
       audio.src = `${song.track_audio}`
+      console.log(song.track_audio)
       startTime.textContent = `${song.track_start_time}`
       endTime.textContent = `${song.track_end_time}`
       updateTimerInterval()

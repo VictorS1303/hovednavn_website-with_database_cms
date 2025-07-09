@@ -6,6 +6,7 @@ import Card from './Card.astro'
 import TicketPurchaseInfo from './TicketPurchaseInfo.astro'
 
 const concertData = await fetchConcertData()
+console.log(concertData)
 ---
 
 <div class='mx-12'>
@@ -26,6 +27,7 @@ const concertData = await fetchConcertData()
           }
           concertCancelOverlayText={concertCard.concert_cancel_overlay_text}
           concertTarget='_blank'
+          isConcertCard={true}
           isConcertCancelled={concertCard.is_concert_cancelled}
         />
       ))
