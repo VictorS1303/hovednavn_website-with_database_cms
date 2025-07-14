@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ScrollToTopBtn from '../components/ScrollToTopBtn.astro'
+import Section from '../components/Section.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+import GalleryContainer from '../components/GalleryContainer.astro'
+import Main from '../components/Main.astro'
+import PageIntroText from '../components/PageIntroText.astro'
+import Hero from '../components/Hero.astro'
+
+
+const navItems = [
+  {
+    href: '/about',
+    text: 'Om',
+  },
+  {
+    href: '/music',
+    text: 'Musik',
+  },
+  {
+    href: '/concerts',
+    text: 'Koncerter',
+  },
+  {
+    href: '/gallery',
+    text: 'Galleri',
+  },
+]
+
+---
+
+<Layout title='Galleri' navItems={navItems}>
+  <Section
+    class='h-screen relative flex items-center justify-center'
+    id='concerts'>
+    <Hero
+      heroHeaderText='Galleri'
+      heroImageSrc='/images/about/hero/about_hero_bg.webp'
+      heroImageAlt='hero concert image'
+      loading='lazy'
+    />
+  </Section>
+  <!-- /images/about/hero/about_hero_bg.webp -->
+  <Main>
+    <SectionHeader class='-mb-12' sectionHeaderText='Galleri' />
+
+    <PageIntroText
+      pageIntroText='Her vil du kunne finde billeder og videoer fra koncerter og andet. Kig endeligt!'
+    />
+  </Main>
+
+  <GalleryContainer />
+</Layout>
+
+<ScrollToTopBtn />

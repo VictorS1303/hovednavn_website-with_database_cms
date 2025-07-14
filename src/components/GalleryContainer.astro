@@ -1,0 +1,19 @@
+---
+import {galleryData} from '../js/gallery_data.js'
+console.log(galleryData)
+---
+
+<div
+  class='container gallery-container mx-auto flex flex-col justify-center items-center w-full gap-6 md:flex-row'>
+  {
+    galleryData.map((galleryItem) => (
+      <div class='flex flex-col'>
+        <img
+          src={galleryItem.galleryFile}
+          class='h-[300px] w-[300px] object-cover'
+        />
+        <p class='text-left'>{galleryItem.galleryFileText}</p>
+      </div>
+    ))
+  }
+</div>

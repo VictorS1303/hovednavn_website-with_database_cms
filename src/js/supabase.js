@@ -1,9 +1,9 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey)
 
 // ABOUT PAGE //
 export const fetchTimelineCardsData = async () =>
@@ -40,35 +40,32 @@ export const fetchMusicData = async (id) => {
         .select('*')
         .order('id', {ascending: true})
 
-    return data;
-};
+    return data
+}
 fetchMusicData()
 
-
- let currentSongId = 0
-
-export const fetchSong = async (id) => {
-
-
+let currentSongId = 0
+export const fetchSong = async (songNumber) => {
   try {
     const { data, error } = await supabase
-      .from('music')
-      .select('*')
-      .eq('id', id) // Filter for the specific ID
-      .order('id', { ascending: true });
+      .from("music")
+      .select("*")
+      .eq("song_number", songNumber)
+      .single()
 
-    if (error) {
-      console.error("Error fetching song:", error.message);
-      return null;
+    if (error || !data) {
+      console.error("Error fetching song:", error?.message || "Song not found")
+      return null
     }
 
-    return data[0] || []
+    return data
   } catch (err) {
-    console.error("Unexpected error while fetching song:", err.message);
-    return null;
+    console.error("Unexpected error while fetching song:", err.message)
+    return null
   }
-};
+}
 
+// Call fetchSong with currentSongId directly (no +1)
 fetchSong(currentSongId)
 
 
@@ -80,6 +77,6 @@ export const fetchConcertData = async () => {
     .order('id', {ascending: true})
 
   return data || []
-};
+}
 
 fetchConcertData()

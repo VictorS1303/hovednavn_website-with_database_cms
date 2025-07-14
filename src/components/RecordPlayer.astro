@@ -97,7 +97,7 @@ const musicData = await fetchMusicData()
         musicData.map((trackInfo, index) => (
           <li
             class='py-2 m-0 flex justify-between items-center text-md text-white hover:text-[var(--track-list-text-hover-color)] cursor-pointer border-b border-white last:border-b-0 transition duration-150 ease-in md:py-4'
-            data-index={index}>
+            data-song-number={trackInfo.song_number}>
             <span class='track-name'>{trackInfo.track_title}</span>
             <span class='track-duration'>{trackInfo.track_end_time}</span>
           </li>
@@ -111,6 +111,7 @@ const musicData = await fetchMusicData()
   import {fetchSong} from '../js/supabase.js'
 
   let currentSongId = 1
+
   const audio = new Audio()
   let timeUpdateInterval
 
@@ -201,6 +202,11 @@ const musicData = await fetchMusicData()
       }
     }
 
+    // Check if last track
+    function isLastTrack() {
+      return currentSongId === musicData.length
+    }
+
     async function playPreviousSong() {
       try {
         const previousSongId = currentSongId - 1
@@ -249,11 +255,10 @@ const musicData = await fetchMusicData()
 
       trackListItems.forEach((item) => {
         item.addEventListener('click', async () => {
-          const selectedIndex = +item.dataset.index
-          const selectedTrack = await fetchSong(selectedIndex + 1)
+          const selectedSongNumber = +item.dataset.songNumber
+          const selectedTrack = await fetchSong(selectedSongNumber)
 
-          // Update the current song ID and play the new track
-          currentSongId = selectedIndex + 1
+          currentSongId = selectedSongNumber
           loadSong(selectedTrack)
           audio.play()
           rotateMobileTrackListIcon()
@@ -270,14 +275,10 @@ const musicData = await fetchMusicData()
       const trackListItems = document.querySelectorAll('.track-list li')
 
       trackListItems.forEach((item) => {
-        // Cast the item to HTMLLIElement
         const listItem = item as HTMLLIElement
+        const songNumber = +listItem.dataset.songNumber
 
-        // Access the `data-index` attribute
-        const itemIndex = +listItem.dataset.index
-
-        // Compare with `currentSongId`
-        if (itemIndex + 1 === currentSongId) {
+        if (songNumber === currentSongId) {
           listItem.classList.add('current-song')
         } else {
           listItem.classList.remove('current-song')
