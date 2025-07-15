@@ -1,0 +1,12 @@
+---
+import PlayButton from './PlayButton.astro'
+const {class: className, id: id, src} = Astro.props
+---
+
+<div class="relative h-[300px] w-[300px]">
+  <PlayButton />
+  <video class={`${className} h-[300px] w-[300px] object-cover`} id={id}>
+    <source src={src} type='video/mp4' />
+  </video>
+  <slot />
+</div>
