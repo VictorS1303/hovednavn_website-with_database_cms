@@ -2,12 +2,12 @@ export function fetchGalleryData()
 {
     const galleryData = [
         {
-            galleryFile: '/recordings/covers/doev.webp',
+            src: '/recordings/covers/doev.webp',
             galleryFileText: 'Studiesession til vores sang "Døv"',
             text: 'Studiesession til "Døv"',
         },
         {
-            galleryFile: '/videos/doev.mp4',
+            src: '/videos/doev_two.mp4',
             galleryFileText: 'Studiesession til vores sang "Døv"',
             text: 'Studiesession til "Døv 2"',
         },
