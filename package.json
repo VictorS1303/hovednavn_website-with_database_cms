@@ -13,6 +13,7 @@
     "@supabase/supabase-js": "^2.49.7",
     "@tailwindcss/vite": "^4.1.4",
     "astro": "^5.7.10",
+    "glightbox": "^3.3.1",
     "gsap": "^3.13.0"
   },
   "devDependencies": {

@@ -46,8 +46,26 @@
     --paragraph-font-size: 16px;
 }
 
-html
+html.glightbox-open
 {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.glightbox-clean .gslide {
+  background: transparent !important;
+}
+
+.glightbox-clean .gslide-inner-content {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Optional: Make caption text more visible if needed */
+.glightbox .gdesc {
+  background: none;
+  color: #fff; /* adjust to your theme */
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6); /* optional for readability */
 }
 
 body

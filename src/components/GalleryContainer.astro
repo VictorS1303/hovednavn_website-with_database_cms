@@ -1,19 +1,36 @@
 ---
-import {galleryData} from '../js/gallery_data.js'
+import '../styles/global.css'
+import '../styles/custom-glightbox-styles.css'
+
+import {fetchGalleryData} from '../js/gallery_data.js'
+
+const galleryData = await fetchGalleryData()
+
 console.log(galleryData)
 ---
 
 <div
-  class='container gallery-container mx-auto flex flex-col justify-center items-center w-full gap-6 md:flex-row'>
+  class='container gallery-container mx-auto flex flex-col justify-center items-center w-full pb-16 gap-6 md:flex-row'>
   {
     galleryData.map((galleryItem) => (
-      <div class='flex flex-col'>
-        <img
-          src={galleryItem.galleryFile}
-          class='h-[300px] w-[300px] object-cover'
-        />
-        <p class='text-left'>{galleryItem.galleryFileText}</p>
+      <div class='flex flex-col' key={galleryItem.galleryFile}>
+        <a
+          href={galleryItem.galleryFile}
+          class='glightbox'
+          data-description={galleryItem.text}>
+          <img
+            src={galleryItem.galleryFile}
+            class='gslide-image h-[300px] w-[300px] object-cover'
+          />
+        </a>
       </div>
     ))
   }
 </div>
+
+<script>
+  import initLightBox from '../js/gallery_lightbox.js'
+  console.log(initLightBox)
+
+  initLightBox()
+</script>

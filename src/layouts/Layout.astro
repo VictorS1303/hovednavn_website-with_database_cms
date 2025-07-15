@@ -15,6 +15,7 @@ import LandingPageFooter from '../components/LandingPageFooter.astro'
 import RecordPlayer from '../components/RecordPlayer.astro'
 import MainFooter from '../components/MainFooter.astro'
 import '../styles/global.css'
+import 'glightbox/dist/css/glightbox.min.css'
 
 const activePage = new URL(Astro.request.url).pathname
 const isHome = activePage === '/'
@@ -22,7 +23,7 @@ const isSingleView = activePage.startsWith('/about/')
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='en' class='glightbox-open'>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
