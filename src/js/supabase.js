@@ -80,3 +80,13 @@ export const fetchConcertData = async () => {
 }
 
 fetchConcertData()
+
+// Fetch gallery data
+export const fetchGalleryData = async () => {
+  const {data, error} = await supabase
+    .from('gallery_images')
+    .select("*")
+    .order("id", { ascending: true })
+    
+  return data || []
+}

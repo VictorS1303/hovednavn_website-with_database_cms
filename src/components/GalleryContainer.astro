@@ -2,26 +2,40 @@
 import '../styles/global.css'
 import '../styles/custom-glightbox-styles.css'
 import GalleryImage from './GalleryImage.astro'
-import GalleryVideo from './GalleryVideo.astro'
-import {fetchGalleryData} from '../js/gallery_data.js'
+import GalleryVideoThumbnail from './GalleryVideoThumbnail.astro'
+import {fetchGalleryData} from '../js/supabase.js'
 
 const galleryData = await fetchGalleryData()
-
-const isVideo = (url) => {
-  const videoExtensions = ['mp4']
-  const extension = url.split('.').pop().toLowerCase()
-  return videoExtensions.includes(extension)
-}
 ---
 
 <div
-  class='container gallery-container mx-auto flex flex-col justify-center items-center w-full pb-16 gap-6 md:flex-row'>
+  class='container gallery-container mx-auto flex flex-col flex-wrap justify-center items-center w-full pb-16 gap-6 md:flex-row'>
   {
     galleryData.map((galleryItem) =>
-      isVideo(galleryItem.src) ? (
-        <GalleryVideo src={galleryItem.src} />
+      isVideo(galleryItem) ? (
+        <div class='relative'>
+          <GalleryVideoThumbnail
+            src='/images/music/hero/hero_bg.jpg'
+            alt={galleryItem.gallery_video_text}
+            class='h-[300px] w-[300px] object-cover'
+          />
+          <a
+            href={galleryItem.gallery_video}
+            class='glightbox absolute h-full w-full'
+            data-description={galleryItem.gallery_video_text}
+            data-autoplay='true'
+            data-type='video'
+            data-source='local'
+            data-poster='/images/music/hero/hero_bg.jpg'
+          />
+        </div>
       ) : (
-        <GalleryImage src={galleryItem.src} />
+        <a
+          href={galleryItem.gallery_image}
+          class='glightbox'
+          data-description={galleryItem.gallery_image_text}>
+          <GalleryImage src={galleryItem.gallery_image} />
+        </a>
       ),
     )
   }

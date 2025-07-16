@@ -21,11 +21,24 @@
 
 .gslide-media.gslide-image
 {
-    height: fit-content;
+    height: 60vh;
+    width: fit-content;
+}
+
+.gslide-media.gslide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* remove any inline spacing */
 }
 
 .gslide-desc
 {
    font-style: italic;
    font-size: 2rem;
+}
+
+.gnext.gbtn svg {
+  fill: #fff !important;
+  stroke: #fff !important;
 }

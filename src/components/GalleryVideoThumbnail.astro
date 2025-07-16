@@ -1,0 +1,10 @@
+---
+import GalleryImage from './GalleryImage.astro'
+import PlayButton from './PlayButton.astro'
+const {class: className, id: id, src, alt} = Astro.props
+---
+
+<div class='relative h-[300px] w-[300px]'>
+  <PlayButton />
+  <GalleryImage src={src} class={className} id={id} alt={alt} />
+</div>
