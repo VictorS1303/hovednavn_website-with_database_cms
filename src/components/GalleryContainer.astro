@@ -11,33 +11,14 @@ const galleryData = await fetchGalleryData()
 <div
   class='container gallery-container mx-auto flex flex-col flex-wrap justify-center items-center w-full pb-16 gap-6 md:flex-row'>
   {
-    galleryData.map((galleryItem) =>
-      isVideo(galleryItem) ? (
-        <div class='relative'>
-          <GalleryVideoThumbnail
-            src='/images/music/hero/hero_bg.jpg'
-            alt={galleryItem.gallery_video_text}
-            class='h-[300px] w-[300px] object-cover'
-          />
-          <a
-            href={galleryItem.gallery_video}
-            class='glightbox absolute h-full w-full'
-            data-description={galleryItem.gallery_video_text}
-            data-autoplay='true'
-            data-type='video'
-            data-source='local'
-            data-poster='/images/music/hero/hero_bg.jpg'
-          />
-        </div>
-      ) : (
-        <a
-          href={galleryItem.gallery_image}
-          class='glightbox'
-          data-description={galleryItem.gallery_image_text}>
-          <GalleryImage src={galleryItem.gallery_image} />
-        </a>
-      ),
-    )
+    galleryData.map((galleryItem) => (
+      <a
+        href={galleryItem.gallery_image}
+        class='glightbox'
+        data-description={galleryItem.gallery_image_text}>
+        <GalleryImage src={galleryItem.gallery_image} />
+      </a>
+    ))
   }
 </div>
 
