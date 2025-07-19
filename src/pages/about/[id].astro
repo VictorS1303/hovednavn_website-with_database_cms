@@ -18,7 +18,10 @@ const artist = await fetchArtistById(id)
 // const {artist} = Astro.props
 
 // console.log(artist.id)
+console.log(artist)
 ---
+
+<h1>Artist name: {artist.artist_name ?? 'No name found'}</h1>
 
 <SingleViewLayout
   name={artist.artist_name}
