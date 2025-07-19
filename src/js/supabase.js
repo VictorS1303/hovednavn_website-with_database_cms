@@ -37,7 +37,7 @@ fetchArtistsData()
 export async function fetchArtistById(id)
 {
   const {data, error} = await supabase
-  .from('artist')
+  .from('artists')
   .select('*')
   .eq('id', id)
   .single()
