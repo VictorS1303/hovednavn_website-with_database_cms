@@ -46,8 +46,12 @@ export async function fetchArtistById(id) {
     return null
   }
 
+  console.log(data)
+
   return data || []
 }
+
+
 
 // Music Data
 export const fetchMusicData = async (id) => {
