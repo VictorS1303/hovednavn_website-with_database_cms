@@ -1,18 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
-// import netlifyEdge from '@astrojs/netlify';
-
-
 import tailwindcss from '@tailwindcss/vite'
+
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  devToolbar:
-  {
+
+  devToolbar: {
     enabled: false,
   },
-  // adapter: netlifyEdge(),
-});
+  output: 'server',
+  adapter: netlify(),
+})
