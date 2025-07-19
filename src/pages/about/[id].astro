@@ -6,6 +6,12 @@ const {id} = Astro.params
 
 const artist = await fetchArtistById(id)
 
+console.log('Artist fetched:', artist)
+
+if (!artist) {
+  return (<div>Artist not found</div>)
+}
+
 // export async function getStaticPaths() {
 //   const artists = await fetchArtistsData()
 
