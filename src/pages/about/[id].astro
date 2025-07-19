@@ -1,19 +1,23 @@
 ---
 import SingleViewLayout from '../../layouts/SingleViewLayout.astro'
-import {fetchArtistsData} from '../../js/supabase.js'
+// import {fetchArtistsData} from '../../js/supabase.js'
+import {fetchArtistById} from '../../js/supabase.js'
+const {id} = Astro.params
 
-export async function getStaticPaths() {
-  const artists = await fetchArtistsData()
+const artist = await fetchArtistById(id)
 
-  return artists.map((artist) => ({
-    params: {id: artist.id},
-    props: {artist},
-  }))
-}
+// export async function getStaticPaths() {
+//   const artists = await fetchArtistsData()
 
-const {artist} = Astro.props
+//   return artists.map((artist) => ({
+//     params: {id: artist.id},
+//     props: {artist},
+//   }))
+// }
 
-console.log(artist.id)
+// const {artist} = Astro.props
+
+// console.log(artist.id)
 ---
 
 <SingleViewLayout
