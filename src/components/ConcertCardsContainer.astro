@@ -1,12 +1,7 @@
 ---
-import {fetchConcertData} from '../js/supabase.js'
-
 const {concertCards, showOverlay} = Astro.props
 import Card from './Card.astro'
 import TicketPurchaseInfo from './TicketPurchaseInfo.astro'
-
-const concertData = await fetchConcertData()
-console.log(concertData)
 ---
 
 <div class='mx-12'>
