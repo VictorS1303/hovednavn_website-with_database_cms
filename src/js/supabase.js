@@ -34,13 +34,17 @@ export async function fetchArtistsData() {
 fetchArtistsData()
 
 // Fetch single artist
-export async function fetchArtistById(id)
-{
-  const {data, error} = await supabase
-  .from('artists')
-  .select('*')
-  .eq('id', id)
-  .single()
+export async function fetchArtistById(id) {
+  const { data, error } = await supabase
+    .from('artists') 
+    .select('*')
+    .eq('id', id)
+    .single()
+
+  if (error) {
+    console.error('Supabase fetchArtistById error:', error)
+    return null
+  }
 
   return data || []
 }
