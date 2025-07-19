@@ -2,7 +2,7 @@
 export const prerender = false
 import {fetchConcertData} from '../js/supabase.js'
 
-const conertCards = await fetchConcertData()
+const concertCards = await fetchConcertData()
 
 import Layout from '../layouts/Layout.astro'
 import ScrollToTopBtn from '../components/ScrollToTopBtn.astro'
@@ -53,7 +53,7 @@ const navItems = [
     <PageIntroText
       pageIntroText='Vi tager naturligvis ud og spiller for jer allesammen - unge som gamle! Så find et sted nær jer, og så ses vi til en svingom eller to; for hvis der er en, vi helst vil optræde for, er det dig!'
     />
-    <ConcertCardsContainer concertCards={conertCards} />
+    <ConcertCardsContainer concertCards={concertCards} />
   </Main>
 
   <ScrollToTopBtn />

@@ -1,7 +1,7 @@
 ---
 import {fetchConcertData} from '../js/supabase.js'
 
-const {showOverlay} = Astro.props
+const {concertCards, showOverlay} = Astro.props
 import Card from './Card.astro'
 import TicketPurchaseInfo from './TicketPurchaseInfo.astro'
 
@@ -12,7 +12,7 @@ console.log(concertData)
 <div class='mx-12'>
   <div class='concert-cards-container flex flex-wrap justify-center'>
     {
-      concertData.map((concertCard) => (
+      concertCards?.map((concertCard) => (
         <Card
           class='m-4'
           src={`${concertCard.concert_image}`}
@@ -27,7 +27,6 @@ console.log(concertData)
           }
           concertCancelOverlayText={concertCard.concert_cancelled_overlay_text}
           concertTarget='_blank'
-          isConcertCard={true}
           isConcertCancelled={concertCard.is_concert_cancelled}
         />
       ))
