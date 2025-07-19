@@ -10,13 +10,19 @@ console.log('Artist fetched:', artist)
 
 {
   artist ? (
-    <SingleViewLayout
-      name={artist.artist_name}
-      image={artist.artist_image}
-      age={artist.artist_age}
-      about={artist.artist_info}
-    />
+    <>
+      <h1>{artist.artist_name}</h1>
+      <img src={artist.artist_image} alt='artist image' />
+      <p>Age: {artist.artist_age}</p>
+      <p>About: {artist.artist_info}</p>
+    </>
   ) : (
+    // <SingleViewLayout
+    //   name={artist.artist_name}
+    //   image={artist.artist_image}
+    //   age={artist.artist_age}
+    //   about={artist.artist_info}
+    // />
     <div>Ingen artist fundet</div>
   )
 }
