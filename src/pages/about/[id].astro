@@ -1,34 +1,22 @@
 ---
 import SingleViewLayout from '../../layouts/SingleViewLayout.astro'
-// import {fetchArtistsData} from '../../js/supabase.js'
 import {fetchArtistById} from '../../js/supabase.js'
 const {id} = Astro.params
 
 const artist = await fetchArtistById(id)
 
 console.log('Artist fetched:', artist)
-
-if (!artist) {
-  return <div>Artist not found</div>
-}
-
-// export async function getStaticPaths() {
-//   const artists = await fetchArtistsData()
-
-//   return artists.map((artist) => ({
-//     params: {id: artist.id},
-//     props: {artist},
-//   }))
-// }
-
-// const {artist} = Astro.props
-
-// console.log(artist.id)
 ---
 
-<SingleViewLayout
-  name={artist.artist_name}
-  image={artist.artist_image}
-  age={artist.artist_age}
-  about={artist.artist_info}
-/>
+{
+  artist ? (
+    <SingleViewLayout
+      name={artist.artist_name}
+      image={artist.artist_image}
+      age={artist.artist_age}
+      about={artist.artist_info}
+    />
+  ) : (
+    <div>Ingen artist fundet</div>
+  )
+}
