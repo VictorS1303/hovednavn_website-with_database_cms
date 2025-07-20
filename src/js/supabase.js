@@ -41,8 +41,12 @@ export async function fetchArtistBySlug(slug) {
     .eq('artist_slug', slug)
     .single()
 
+  if (error) {
+    console.error("Supabase error fetching artist:", error.message)
+    return null
+  }
 
-  return data || null
+  return data
 }
 
 

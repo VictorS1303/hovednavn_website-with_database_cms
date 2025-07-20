@@ -1,22 +1,9 @@
 ---
 import SingleViewLayout from '../../components/SingleViewLayout.astro'
-import { fetchArtistBySlug } from '../../js/supabase.js'
+import {fetchArtistBySlug} from '../../js/supabase.js'
 
-const { slug } = Astro.params
+const {slug} = Astro.params
 const artist = await fetchArtistBySlug(slug)
-
-console.log('Artist fetched:', artist)
 ---
 
-{
-  artist ? (
-    <SingleViewLayout
-      name={artist.artist_name}
-      image={artist.artist_image}
-      age={artist.artist_age}
-      about={artist.artist_info}
-    />
-  ) : (
-    <div>Ingen artist fundet</div>
-  )
-}
+{artist ? <SingleViewLayout artist={artist} /> : <div>Ingen artist fundet</div>}

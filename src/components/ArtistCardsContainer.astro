@@ -6,7 +6,6 @@ import SectionHeader from './SectionHeader.astro'
 import {supabase} from '../js/supabase.js'
 
 const {data: artistData, error} = await supabase.from('artists').select('*')
-console.log(artistData)
 
 if (error) {
   throw new Error(`Failed to fetch artists: ${error.message}`)

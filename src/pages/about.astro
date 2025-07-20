@@ -50,7 +50,7 @@ console.log(artistData)
       loading='lazy'
     />
   </Section>
-  <!-- /images/about/hero/about_hero_bg.webp -->
+
   <Main>
     <SectionHeader class='-mb-12' sectionHeaderText='Velkommen til Hovednavn' />
 
@@ -60,7 +60,7 @@ console.log(artistData)
 
     <TimelineContainer />
 
-    <ArtistCardsContainer showOverlay={true} />
+    <ArtistCardsContainer artistData={artistData} showOverlay={true} />
   </Main>
 </Layout>
 
