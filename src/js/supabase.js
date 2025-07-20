@@ -42,7 +42,7 @@ export async function fetchArtistBySlug(slug) {
     .single()
 
 
-  return data || []
+  return data || null
 }
 
 
