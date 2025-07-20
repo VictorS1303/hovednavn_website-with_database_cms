@@ -1,9 +1,9 @@
 ---
 import SingleViewLayout from '../../components/SingleViewLayout.astro'
-import {fetchArtistById} from '../../js/supabase.js'
-const {id} = Astro.params
+import { fetchArtistBySlug } from '../../js/supabase.js'
 
-const artist = await fetchArtistById(id)
+const { slug } = Astro.params
+const artist = await fetchArtistBySlug(slug)
 
 console.log('Artist fetched:', artist)
 ---

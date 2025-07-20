@@ -20,7 +20,7 @@ if (error) {
     id='artist_cards_container'>
     {
       artistData.map((artistCard) => (
-        <a href={`/about/${artistCard.id}`}>
+        <a href={`/about/${artistCard.artist_slug}`}>
           <Card
             class='artist-card m-4'
             id={artistCard.id}

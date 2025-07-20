@@ -1,7 +1,5 @@
 ---
-const {class: className, id: id} = Astro.props
-import {fetchMusicData} from '../js/supabase.js'
-const musicData = await fetchMusicData()
+const {class: className, id: id, musicData} = Astro.props
 ---
 
 <div
@@ -24,7 +22,6 @@ const musicData = await fetchMusicData()
         loading='lazy'
       />
     </div>
-    <!-- src='/recordings/covers/doev.webp' -->
 
     <!-- Track Data Container -->
     <div

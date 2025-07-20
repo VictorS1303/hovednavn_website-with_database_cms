@@ -4,8 +4,6 @@ import ScrollToTopBtn from '../components/ScrollToTopBtn.astro'
 import RecordPlayer from '../components/RecordPlayer.astro'
 import SectionHeader from '../components/SectionHeader.astro'
 import Main from '../components/Main.astro'
-import {Image} from '@astrojs/image/components'
-import landingPageBgImage from '../../src/images/landing_page/hero/hero_bg.jpg'
 
 import Section from '../components/Section.astro'
 import Hero from '../components/Hero.astro'
@@ -33,6 +31,10 @@ const navItems = [
     text: 'Galleri',
   },
 ]
+
+import {fetchMusicData} from '../js/supabase'
+
+const musicData = await fetchMusicData()
 ---
 
 <Layout title='Musik' navItems={navItems}>
@@ -54,7 +56,7 @@ const navItems = [
         pageIntroText='Velkommen til vores musikalske univers. Her kan du få en forsmag på, hvad vi har at byde på - om det er lette melodier eller mere eftertænksomme tekster, har vi helt sikkert noget for dig! Så giv det et lyt, og så ses vi forhåbentlig til en koncert eller to.'
       />
 
-      <RecordPlayer />
+      <RecordPlayer musicData={musicData} />
     </Main>
   </div>
 </Layout>
