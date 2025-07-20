@@ -4,7 +4,7 @@ import ConcertCardContent from './ConcertCardContent.astro'
 import ArtistCardContent from './ArtistCardContent.astro'
 import ConcertCancelOverlay from './ConcertCancelOverlay.astro'
 
-import { fetchConcertData } from '../js/supabase'
+import {fetchConcertData} from '../js/supabase'
 
 const {
   class: className,
@@ -29,24 +29,22 @@ const showOverlay = true
 
 {
   isArtistCard ? (
-    <a href={`/about/${id}`}>
-      <article
-        class={`${className} paragraph-font relative h-[325px] w-[300px] flex justify-center`}
-        id={id}>
-        <img
-          src={src}
-          class='h-full w-full object-cover'
-          alt='artist card image'
-        />
+    <article
+      class={`${className} paragraph-font relative h-[325px] w-[300px] flex justify-center`}
+      id={id}>
+      <img
+        src={src}
+        class='h-full w-full object-cover'
+        alt='artist card image'
+      />
 
-        {showOverlay && <Overlay />}
+      {showOverlay && <Overlay />}
 
-        <ArtistCardContent
-          artistName={artistName}
-          artistBandRole={artistBandRole}
-        />
-      </article>
-    </a>
+      <ArtistCardContent
+        artistName={artistName}
+        artistBandRole={artistBandRole}
+      />
+    </article>
   ) : isConcertCancelled ? (
     <article
       class={`${className} relative h-[325px] w-[300px] flex items-center justify-center`}
@@ -66,7 +64,6 @@ const showOverlay = true
         alt='concert card image'
       />
 
-      
       {showOverlay && <Overlay />}
 
       <ConcertCardContent
