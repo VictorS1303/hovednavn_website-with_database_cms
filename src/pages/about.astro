@@ -1,5 +1,8 @@
 ---
+export const prerender = false
+
 import {fetchArtistsData} from '../js/supabase.js'
+import {fetchTimelineCardsData} from '../js/supabase.js'
 
 import Layout from '../layouts/Layout.astro'
 import ScrollToTopBtn from '../components/ScrollToTopBtn.astro'
@@ -36,7 +39,7 @@ const navItems = [
 ]
 
 const artistData = await fetchArtistsData()
-console.log(artistData)
+const timelineCardsData = await fetchTimelineCardsData()
 ---
 
 <Layout title='Om' navItems={navItems}>
@@ -58,7 +61,7 @@ console.log(artistData)
       pageIntroText='Hej og velkommen til! Vi hedder Hovednavn og består af fem gutter, der holder af at spille musik sammen. Her på siden har du mulighed for at lære os bedre at kende - alt fra, hvordan Hovednavn blev til samt om os hver især personligt.'
     />
 
-    <TimelineContainer />
+    <TimelineContainer timelineCardsData={timelineCardsData} />
 
     <ArtistCardsContainer artistData={artistData} showOverlay={true} />
   </Main>
