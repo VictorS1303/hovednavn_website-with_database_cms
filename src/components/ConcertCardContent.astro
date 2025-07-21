@@ -1,5 +1,4 @@
 ---
-const googleMapsApiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY
 const {
   concertDate,
   concertLocation,
@@ -7,6 +6,11 @@ const {
   concertPrice,
   concertTarget,
 } = Astro.props
+
+const formattedDate = new Date(concertDate).toLocaleDateString('da-DK', {
+  day: 'numeric',
+  month: 'long',
+})
 ---
 
 <div
@@ -14,18 +18,8 @@ const {
   <h2
     class='text-xl m-2 text-[var(--secondary-text-color)] font-bold'
     id='concert_date'>
-    {concertDate}
+    {formattedDate}
   </h2>
-  <div
-    class='flex flex-col justify-between container map-container absolute inset-0 z-50 h-full w-full translate-y-[100%] transition-translate duration-400 ease-in'>
-    <!-- <div
-      class='container map-control-container flex justify-around items-center z-[300] px-3 h-10 bg-white'
-      id='map_control_container'>
-      <a href={concertEvent} target={concertTarget} id='show_event_btn'
-        >Vis event</a
-      >
-    </div> -->
-  </div>
 
   <h3
     class='date text-xl text-[var(--secondary-text-color)] font-bolder'
@@ -59,17 +53,14 @@ const {
 </div>
 
 <script>
-  const concertDateElement = document.getElementById('concert_date')
-  const dateString = concertDateElement.textContent.trim()
+  const concertDate = document.querySelector('#concert_date')
 
-  const parsedDate = new Date(dateString)
-
-  const formattedDate = new Intl.DateTimeFormat('da-DK', {
-    dateStyle: 'full',
-    timeStyle: 'long',
+  const concertDateFormatted = new Intl.DateTimeFormat('da-DK', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
     timeZone: 'Europe/Copenhagen',
-  }).format(parsedDate)
+  }).format(new Date(concertDate))
 
-  console.log(formattedDate)
-  concertDateElement.textContent = formattedDate
+  concertDate.textContent = concertDateFormatted
 </script>

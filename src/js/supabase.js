@@ -88,6 +88,13 @@ fetchSong(currentSongId)
 
 
 // Concert Data
+// supabase
+//   .channel('concert-updates')
+//   .on('postgres_changes', { event: '*', schema: 'public', table: 'concerts' }, () => {
+//     console.log('Realtime event received — reloading page')
+//     location.reload()
+//   })
+//   .subscribe()
 export const fetchConcertData = async () => {
   const { data, error } = await supabase
     .from('concerts')
@@ -97,7 +104,6 @@ export const fetchConcertData = async () => {
   return data || []
 }
 
-fetchConcertData()
 
 // Fetch gallery data
 export const fetchGalleryData = async () => {
