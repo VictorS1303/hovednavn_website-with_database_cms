@@ -11,7 +11,7 @@ export const fetchTimelineCardsData = async () =>
     const {data, error} = await supabase
     .from('timeline')
     .select('*')
-    .order('id', {ascending: true})
+    .order('timeline_card_number', {ascending: true})
 
     return data || []
 }

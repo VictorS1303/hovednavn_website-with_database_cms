@@ -21,7 +21,7 @@ const isSingleView = activePage.startsWith('/about/') && activePage !== '/about'
 {
   isSingleView && (
     <nav
-      class={`${className} h-[70px] backdrop-blur-2xl relative top-0 z-[1000] w-full px-6 transition-right duration-400 ease-in md:fixed md:backdrop-blur-none md:left-0 md:top-0 md:flex md:justify-center md:h-20 md:w-screen md:px-12 md:items-center`}
+      class={`${className} h-[70px] nav-bg-backdrop relative top-0 z-[1000] w-full px-6 transition-right duration-400 ease-in md:fixed md:backdrop-blur-none md:left-0 md:top-0 md:flex md:justify-center md:h-20 md:w-screen md:px-12 md:items-center`}
       id='main_nav_single'>
       <div class='absolute top-4 left-4 md:static md:translate-x-0 md:bottom-auto md:left-auto'>
         {isSingleView ? (
@@ -62,7 +62,7 @@ const isSingleView = activePage.startsWith('/about/') && activePage !== '/about'
 {
   !isSingleView && (
     <nav
-      class={`${className} backdrop-blur-3xl fixed top-0 z-[1000] pt-12 h-full w-[250px] -right-[250px] px-6 text-center transition-right duration-400 ease-in md:fixed md:backdrop-blur-none md:left-0 md:top-0 md:flex md:justify-center md:h-20 md:w-screen md:px-12 md:items-center`}
+      class={`${className} backdrop-blur-[100px] fixed top-0 z-[1000] h-full w-[250px] -right-[250px] text-center transition-right duration-400 ease-in md:fixed md:h-[80px] md:left-0 md:top-0 md:flex md:justify-center md:items-center md:w-screen md:px-12 md:items-center`}
       id='main_nav'>
       <div class='absolute bottom-8 left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:bottom-auto md:left-auto'>
         {isHome ? (
@@ -74,15 +74,15 @@ const isSingleView = activePage.startsWith('/about/') && activePage !== '/about'
         )}
       </div>
 
-      <ul class='primary-font flex flex-col h-full items-center justify-center gap-8 uppercase text-xl text-white shadow-none md:flex-row md:static md:ml-auto md:gap-8'>
+      <ul class='primary-font flex flex-col h-full items-center align-center justify-center gap-8 uppercase text-xl text-white shadow-none md:flex-row md:static md:ml-auto md:gap-8'>
         {navItems.map((navItem: any) => (
           <li class='text-2xl font-bold'>
             <a
               href={navItem.href}
               class={`${
                 navItem.href === activePage
-                  ? 'text-[var(--secondary-text-color)] pointer-events-none'
-                  : 'hover:text-[var(--secondary-text-color)] transition-text ease-in duration-150'
+                  ? 'text-[#daa44d] pointer-events-none'
+                  : 'hover:text-[#daa44d] transition-text ease-in duration-150'
               }`}>
               {navItem.text}
             </a>

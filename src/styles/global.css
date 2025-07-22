@@ -13,6 +13,7 @@
     /* Background Colors */
     --mobile-menu-background-color: linear-gradient(167.99deg, rgba(239, 239, 239, 0.2) 0%, rgba(239, 239, 239, 0.2) 100%);
     --body-bg-color: #f5c068;
+    --nav-bg-backdrop: 100px;
     
     /* Text Colors */
     --primary-text-color: #fff;
@@ -172,6 +173,12 @@ h1, h2, h3, h4, h5, h6
     }
 }
 
+/* Nav backdrop */
+.nav-bg-backdrop
+{
+    backdrop-filter: blur(var(--nav-bg-backdrop));
+}
+
 /* Modal */
 dialog
 {
@@ -189,11 +196,7 @@ dialog
     pointer-events: none;
 }
 
-/* img
-{
-    height: 100%;
-    width: 100%;
-} */
+
 
 /* Vinyl */
 .spin
