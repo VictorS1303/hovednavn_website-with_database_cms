@@ -1,0 +1,15 @@
+---
+
+const {class: className, id: id, emptyListMessageText} = Astro.props
+---
+
+<p class=`${className === 'edit' ? 'text-[#f5c068]' : 'text-[#801115]'} text-center mt-24 text-2xl text-[var(--paragraph-font)]`>
+  {emptyListMessageText}
+</p>
+
+<style>
+  p
+  {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>

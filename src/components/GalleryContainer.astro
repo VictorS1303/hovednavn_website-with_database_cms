@@ -3,7 +3,8 @@ import '../styles/global.css'
 import '../styles/custom-glightbox-styles.css'
 import GalleryImage from './GalleryImage.astro'
 import Overlay from './Overlay.astro'
-import GalleryVideoThumbnail from './GalleryVideoThumbnail.astro'
+
+import EmptyListMessage from './EmptyListMessage.astro'
 import {fetchGalleryData} from '../js/supabase.js'
 
 const galleryData = await fetchGalleryData()
@@ -12,17 +13,24 @@ const galleryData = await fetchGalleryData()
 <div
   class='container gallery-container mx-auto flex flex-col flex-wrap justify-center items-center w-full pb-16 gap-6 md:flex-row'>
   {
-    galleryData.map((galleryItem) => (
-      <div class='group relative'>
-        <Overlay class='absolute inset-0 opacity-0 transition-opacity duration-75 ease-in group-hover:opacity-50' />
-        <a
-          href={galleryItem.gallery_image}
-          class='glightbox'
-          data-description={galleryItem.gallery_image_text}>
-          <GalleryImage src={galleryItem.gallery_image} />
-        </a>
-      </div>
-    ))
+    galleryData.length > 0 ? (
+      galleryData.map((galleryItem) => (
+        <div class='group relative'>
+          <Overlay class='absolute inset-0 opacity-0 transition-opacity duration-75 ease-in group-hover:opacity-50' />
+          <a
+            href={galleryItem.gallery_image}
+            class='glightbox'
+            data-description={galleryItem.gallery_image_text}>
+            <GalleryImage src={galleryItem.gallery_image} />
+          </a>
+        </div>
+      ))
+    ) : (
+      <EmptyListMessage
+        class='paragraph-font'
+        emptyListMessageText='Ingen billeder at vise.'
+      />
+    )
   }
 </div>
 
