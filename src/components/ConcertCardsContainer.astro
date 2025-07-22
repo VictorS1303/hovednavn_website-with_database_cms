@@ -6,7 +6,9 @@ import TicketPurchaseInfo from './TicketPurchaseInfo.astro'
 ---
 
 <div class='mx-12'>
-  <div class='concert-cards-container flex flex-wrap justify-center'>
+  <div
+    id='concert-cards-container'
+    class='concert-cards-container flex flex-wrap justify-center'>
     {
       concertCards?.map((concertCard) => (
         <Card
@@ -28,5 +30,4 @@ import TicketPurchaseInfo from './TicketPurchaseInfo.astro'
       ))
     }
   </div>
-  <TicketPurchaseInfo ticketPurchaseInfoText='Billetter kan købes i døren' />
 </div>
