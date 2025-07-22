@@ -25,7 +25,7 @@ export async function fetchArtistsData() {
   const { data: artists, error } = await supabase
   .from('artists')
   .select('*')
-  .order('id', {descending: true})
+  .order('artist_number', {ascending: true})
 
   
   return artists || []
