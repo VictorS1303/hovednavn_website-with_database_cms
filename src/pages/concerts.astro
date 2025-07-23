@@ -1,6 +1,7 @@
 ---
 export const prerender = false
 import {fetchConcertData} from '../js/supabase.js'
+import {fetchPageIntroTextData} from '../js/supabase.js'
 
 const concertCards = await fetchConcertData()
 
@@ -35,6 +36,9 @@ const navItems = [
     text: 'Galleri',
   },
 ]
+
+const pageIntroTextData = await fetchPageIntroTextData()
+const concertsIntroText = pageIntroTextData[2]?.page_intro_texts
 ---
 
 <Layout title='Koncerter' navItems={navItems}>
@@ -50,10 +54,7 @@ const navItems = [
   </Section>
   <Main class='relative'>
     <SectionHeader class='-mb-12' sectionHeaderText='Kom ud at feste med os' />
-    <PageIntroText
-      pageIntroText='Vi tager naturligvis ud og spiller for jer allesammen - unge som gamle! Så find et sted nær jer, og så ses vi til en svingom eller to; for hvis der er en, vi helst vil optræde for, er det dig!'
-    />
+    <PageIntroText pageIntroText={concertsIntroText} />
     <ConcertCardsContainer concertCards={concertCards} />
   </Main>
-
 </Layout>

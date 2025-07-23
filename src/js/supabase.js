@@ -114,3 +114,14 @@ export const fetchGalleryData = async () => {
     
   return data || []
 }
+
+// Fetch Page Into Text Data
+export const fetchPageIntroTextData = async () =>
+{
+  const {data, error} = await supabase
+    .from('page_intro_text')
+    .select('*')
+    .order('page_intro_text_number', {ascending: true})
+
+  return data || []
+}

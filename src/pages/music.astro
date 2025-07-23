@@ -33,8 +33,12 @@ const navItems = [
 ]
 
 import {fetchMusicData} from '../js/supabase'
+import {fetchPageIntroTextData} from '../js/supabase'
 
 const musicData = await fetchMusicData()
+const pageIntroTextData = await fetchPageIntroTextData()
+const musicPageIntroText = pageIntroTextData[0]?.page_intro_texts
+
 ---
 
 <Layout title='Musik' navItems={navItems}>
@@ -52,9 +56,7 @@ const musicData = await fetchMusicData()
         class='-mb-12'
         sectionHeaderText='Hvordan lyder Hovednavn?'
       />
-      <PageIntroText
-        pageIntroText='Velkommen til vores musikalske univers. Her kan du få en forsmag på, hvad vi har at byde på - om det er lette melodier eller mere eftertænksomme tekster, har vi helt sikkert noget for dig! Så giv det et lyt, og så ses vi forhåbentlig til en koncert eller to.'
-      />
+      <PageIntroText pageIntroText={musicPageIntroText} />
 
       <RecordPlayer musicData={musicData} />
     </Main>
