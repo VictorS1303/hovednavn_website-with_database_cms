@@ -43,7 +43,7 @@ const artistData = await fetchArtistsData()
 const timelineCardsData = await fetchTimelineCardsData()
 
 const pageIntroTextData = await fetchPageIntroTextData()
-const aboutPageIntroText = pageIntroTextData[1]?.page_intro_texts
+const aboutPageIntroText = pageIntroTextData[0]?.page_intro_texts
 ---
 
 <Layout title='Om' navItems={navItems}>

@@ -37,8 +37,7 @@ import {fetchPageIntroTextData} from '../js/supabase'
 
 const musicData = await fetchMusicData()
 const pageIntroTextData = await fetchPageIntroTextData()
-const musicPageIntroText = pageIntroTextData[0]?.page_intro_texts
-
+const musicPageIntroText = pageIntroTextData[1]?.page_intro_texts
 ---
 
 <Layout title='Musik' navItems={navItems}>
