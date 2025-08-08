@@ -1,6 +1,4 @@
 ---
-export const prerender = false
-
 import Card from './Card.astro'
 import SectionHeader from './SectionHeader.astro'
 import {supabase} from '../js/supabase.js'
@@ -26,7 +24,7 @@ if (error) {
             src={artistCard.artist_image}
             isArtistCard={true}
             showOverlay={true}
-            artistName={artistCard.artist_name}
+            artistName={artistCard.artist_card_title}
             artistBandRole={artistCard.artist_band_role}
           />
         </a>

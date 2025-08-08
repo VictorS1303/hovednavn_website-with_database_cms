@@ -21,7 +21,7 @@ const isSingleView = activePage.startsWith('/about/') && activePage !== '/about'
 {
   isSingleView && (
     <nav
-      class={`${className} h-[70px] nav-bg-backdrop relative top-0 z-[1000] w-full px-6 transition-right duration-400 ease-in md:fixed md:backdrop-blur-none md:left-0 md:top-0 md:flex md:justify-center md:h-20 md:w-screen md:px-12 md:items-center`}
+      class={`${className} h-[70px] relative top-0 z-[1000] w-full px-6 transition-right duration-400 ease-in md:fixed md:backdrop-blur-none md:left-0 md:top-0 md:flex md:justify-center md:h-20 md:w-screen md:px-12 md:items-center`}
       id='main_nav_single'>
       <div class='absolute top-4 left-4 md:static md:translate-x-0 md:bottom-auto md:left-auto'>
         {isSingleView ? (

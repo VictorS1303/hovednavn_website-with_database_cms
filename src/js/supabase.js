@@ -34,15 +34,15 @@ export async function fetchArtistsData() {
 fetchArtistsData()
 
 // Fetch single artist
-export async function fetchArtistBySlug(slug) {
-  const { data, error } = await supabase
-    .from('artists') 
+export async function fetchConcertBySlug(slug) {
+  const { data, error } = await supabaseClient
+    .from('concert_cards')
     .select('*')
-    .eq('artist_slug', slug)
+    .eq('concert_slug', slug)
     .single()
 
   if (error) {
-    console.error("Supabase error fetching artist:", error.message)
+    console.error("Supabase error fetching concert:", error.message)
     return null
   }
 
@@ -124,4 +124,19 @@ export const fetchPageIntroTextData = async () =>
     .order('page_intro_text_number', {ascending: true})
 
   return data || []
+}
+
+export async function fetchArtistBySlug(slug) {
+  const { data, error } = await supabase
+    .from('artists')
+    .select('*')
+    .eq('artist_slug', slug)
+    .single()
+
+  if (error) {
+    console.error("Supabase error fetching artist:", error.message)
+    return null
+  }
+
+  return data
 }

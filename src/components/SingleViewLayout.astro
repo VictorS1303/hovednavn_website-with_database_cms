@@ -7,7 +7,7 @@ import SectionHeader from '../components/SectionHeader.astro'
 
 const {artist} = Astro.props
 const {
-  artist_name: name,
+  artist_card_title: name,
   artist_age: age,
   artist_info: about,
   artist_image: image,
@@ -16,7 +16,7 @@ const {
 
 <Layout title={name}>
   <Section
-    class='grid place-content-center bg-[var(--body-bg-color)] text-red-400 min-h-screen w-full'>
+    class='grid place-content-center bg-[var(--body-bg-color)] text-red-400 min-h-screen w-full md:mt-16'>
     <div
       class='single-view-container
              flex flex-col gap-8 px-8

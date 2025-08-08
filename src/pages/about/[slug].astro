@@ -1,9 +1,14 @@
 ---
+export const prerender = false
+
 import SingleViewLayout from '../../components/SingleViewLayout.astro'
 import {fetchArtistBySlug} from '../../js/supabase.js'
 
 const {slug} = Astro.params
 const artist = await fetchArtistBySlug(slug)
+
+console.log('Slug from URL:', slug)
+console.log('Fetched artist:', artist)
 ---
 
 {artist ? <SingleViewLayout artist={artist} /> : <div>Ingen artist fundet</div>}
